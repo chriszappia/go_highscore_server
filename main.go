@@ -40,7 +40,7 @@ func getScores(c *gin.Context) {
 
 	var scores []score
 
-	db.Debug().Order("Score desc").Limit(count).Offset(start).Find(&scores)
+	db.Order("Score desc").Limit(count).Offset(start).Find(&scores)
 
 	c.IndentedJSON(http.StatusOK, scores)
 }
