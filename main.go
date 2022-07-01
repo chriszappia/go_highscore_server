@@ -19,7 +19,7 @@ func main() {
 	router := gin.Default()
 	router.GET("/highscore", getScores)
 	router.POST("/highscore", addScore)
-	router.GET("highscore/:username", getScoreByUsername)
+	router.GET("/highscore/:username", getScoreByUsername)
 
 	router.Run("localhost:8080")
 }
@@ -45,8 +45,6 @@ func getScores(c *gin.Context) {
 func addScore(c *gin.Context) {
 	var newScore score
 
-	// Call BindJSON to bind the received JSON to
-	// newAlbum.
 	if err := c.BindJSON(&newScore); err != nil {
 		return
 	}
